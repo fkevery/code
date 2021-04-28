@@ -1,5 +1,6 @@
+# 软键盘处理
 
-# 收起与弹出
+## 收起与弹出
 
 > 这部分处理与对应的 EditText 绑定，在键盘弹起时对应的 EditText 会自动获取焦点，收起时会失去焦点
 
@@ -24,13 +25,13 @@ fun openKeyboard(et: EditText, ctx: Context) {
 }
 ```
 
-# 高度变化监听
+## 高度变化监听
 
 > 主要思路：**使用一个 PopupWindow 覆盖在当前界面上，它会在键盘弹出收起时高度自动发生变化。同时添加 OnGlobalLayoutListener 回调，当高度发生变化时会收到回调**
 
 这里面有一点可以优化的地方：
 
-1. 可以自动跟踪 Activity 的生命周期，当其关闭时自动调用 close()
+1. 可以自动跟踪 Activity 的生命周期，当其关闭时自动调用 close\(\)
 
 ```java
 public class KeyboardHeightProvider extends PopupWindow {
@@ -150,5 +151,4 @@ public class KeyboardHeightProvider extends PopupWindow {
     }
 }
 ```
-
 
