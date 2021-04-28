@@ -2,7 +2,7 @@
 
 > mixin 是一个类，它提供了一些方法实现。其他类可使用它定义的方法又不需要继承 mixin 类
 
-本例主要&lt;font color=red&gt;使用动态代理实现 mixin 功能&lt;/font&gt;
+本例主要**使用动态代理实现 mixin 功能**
 
 两个小问题
 
