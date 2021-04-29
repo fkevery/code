@@ -6,4 +6,5 @@
   * [软键盘处理](android/softkey.md)
 * [Java](java/README.md)
   * [实现 mixin 效果](java/mixin.md)
+  * [枚举实现责任链模式](java/mei-ju-shi-xian-ze-ren-lian-mo-shi.md)
 
