@@ -6,5 +6,5 @@ description: debug 版本不 root 查看 sp 文件
 
 1. 安装 debug 版本
 2. 运行 adb shell
-3. 运行 <font_color=red>运行 run-as <包名></font>
+3. 运行 <font color=red>run-as <包名></font>
 
