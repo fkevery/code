@@ -1,0 +1,485 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>软键盘处理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../java/" />
+    
+    
+    <link rel="prev" href="sdkinit.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="debug_sp.html">
+            
+                <a href="debug_sp.html">
+            
+                    
+                    Debug 版本查看 sp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="sdkinit.html">
+            
+                <a href="sdkinit.html">
+            
+                    
+                    SdkInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="softkey.html">
+            
+                <a href="softkey.html">
+            
+                    
+                    软键盘处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/mixin.html">
+            
+                <a href="../java/mixin.html">
+            
+                    
+                    实现 mixin 效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/mei-ju-shi-xian-ze-ren-lian-mo-shi.html">
+            
+                <a href="../java/mei-ju-shi-xian-ze-ren-lian-mo-shi.html">
+            
+                    
+                    枚举实现责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >软键盘处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8F6F;&#x952E;&#x76D8;&#x5904;&#x7406;">&#x8F6F;&#x952E;&#x76D8;&#x5904;&#x7406;</h1>
+<h2 id="&#x6536;&#x8D77;&#x4E0E;&#x5F39;&#x51FA;">&#x6536;&#x8D77;&#x4E0E;&#x5F39;&#x51FA;</h2>
+<blockquote>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x5904;&#x7406;&#x4E0E;&#x5BF9;&#x5E94;&#x7684; EditText &#x7ED1;&#x5B9A;&#xFF0C;&#x5728;&#x952E;&#x76D8;&#x5F39;&#x8D77;&#x65F6;&#x5BF9;&#x5E94;&#x7684; EditText &#x4F1A;&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x7126;&#x70B9;&#xFF0C;&#x6536;&#x8D77;&#x65F6;&#x4F1A;&#x5931;&#x53BB;&#x7126;&#x70B9;</p>
+</blockquote>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x5173;&#x95ED;&#x952E;&#x76D8;</span>
+<span class="hljs-function">fun <span class="hljs-title">closeKeyboard</span><span class="hljs-params">(et: EditText, activity: Activity)</span> </span>{
+    val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(et.windowToken, <span class="hljs-number">0</span>)
+    et.clearFocus()
+    <span class="hljs-keyword">if</span> (activity.currentFocus != <span class="hljs-keyword">null</span>) {
+        imm.hideSoftInputFromWindow(activity.currentFocus!!.windowToken, <span class="hljs-number">0</span>)
+    }
+}
+<span class="hljs-comment">// &#x6253;&#x5F00;&#x952E;&#x76D8;</span>
+<span class="hljs-function">fun <span class="hljs-title">openKeyboard</span><span class="hljs-params">(et: EditText, ctx: Context)</span> </span>{
+    et.isFocusable = <span class="hljs-keyword">true</span>
+    et.isFocusableInTouchMode = <span class="hljs-keyword">true</span>
+    et.requestFocus()
+    val imm = ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+            InputMethodManager.HIDE_IMPLICIT_ONLY)
+}
+</code></pre>
+<h2 id="&#x9AD8;&#x5EA6;&#x53D8;&#x5316;&#x76D1;&#x542C;">&#x9AD8;&#x5EA6;&#x53D8;&#x5316;&#x76D1;&#x542C;</h2>
+<blockquote>
+<p>&#x4E3B;&#x8981;&#x601D;&#x8DEF;&#xFF1A;<strong>&#x4F7F;&#x7528;&#x4E00;&#x4E2A; PopupWindow &#x8986;&#x76D6;&#x5728;&#x5F53;&#x524D;&#x754C;&#x9762;&#x4E0A;&#xFF0C;&#x5B83;&#x4F1A;&#x5728;&#x952E;&#x76D8;&#x5F39;&#x51FA;&#x6536;&#x8D77;&#x65F6;&#x9AD8;&#x5EA6;&#x81EA;&#x52A8;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;&#x540C;&#x65F6;&#x6DFB;&#x52A0; OnGlobalLayoutListener &#x56DE;&#x8C03;&#xFF0C;&#x5F53;&#x9AD8;&#x5EA6;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x4F1A;&#x6536;&#x5230;&#x56DE;&#x8C03;</strong></p>
+</blockquote>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6709;&#x4E00;&#x70B9;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;&#xFF1A;</p>
+<ol>
+<li>&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A; Activity &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x5F53;&#x5176;&#x5173;&#x95ED;&#x65F6;&#x81EA;&#x52A8;&#x8C03;&#x7528; close()</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">KeyboardHeightProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PopupWindow</span> </span>{
+    <span class="hljs-comment">// &#x56DE;&#x8C03;</span>
+    <span class="hljs-keyword">private</span> Function1&lt;Integer, Unit&gt; observer;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> keyboardLandscapeHeight;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> keyboardPortraitHeight;
+
+    <span class="hljs-comment">// PopupWindow &#x4E2D;&#x663E;&#x793A;&#x7684; View</span>
+    <span class="hljs-keyword">private</span> View popupView;
+
+    <span class="hljs-comment">// &#x754C;&#x9762;&#x4E2D;&#x7684; content View</span>
+    <span class="hljs-keyword">private</span> View parentView;
+
+    <span class="hljs-keyword">private</span> Activity activity;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> isOpen;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> OnGlobalLayoutListener listener = <span class="hljs-keyword">new</span> OnGlobalLayoutListener() {
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onGlobalLayout</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">if</span> (popupView != <span class="hljs-keyword">null</span>) {
+                handleOnGlobalLayout();
+            }
+        }
+    };
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">KeyboardHeightProvider</span><span class="hljs-params">(Activity activity)</span> </span>{
+        <span class="hljs-keyword">super</span>(activity);
+        <span class="hljs-keyword">if</span> (activity == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">this</span>.activity = activity;
+
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x957F;&#x5BBD;&#x90FD; match_parent &#x7684; View&#xFF0C;&#x7ED9; PopupWindow &#x7528;</span>
+        <span class="hljs-keyword">this</span>.popupView = <span class="hljs-keyword">new</span> Space(activity);
+        <span class="hljs-keyword">this</span>.popupView.setLayoutParams(<span class="hljs-keyword">new</span> ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        setContentView(popupView);
+
+        setSoftInputMode(LayoutParams.SOFT_INPUT_ADJUST_RESIZE | LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
+
+        parentView = activity.findViewById(android.R.id.content);
+
+        setWidth(<span class="hljs-number">0</span>);
+        setHeight(LayoutParams.MATCH_PARENT);
+
+        popupView.getViewTreeObserver().addOnGlobalLayoutListener(listener);
+    }
+
+
+    <span class="hljs-comment">// &#x5F00;&#x59CB;&#x663E;&#x793A;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (parentView == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">if</span> (activity == <span class="hljs-keyword">null</span> || activity.isFinishing() || activity.isDestroyed()) {
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> (!isShowing() &amp;&amp; parentView.getWindowToken() != <span class="hljs-keyword">null</span>) {
+                setBackgroundDrawable(<span class="hljs-keyword">new</span> ColorDrawable(<span class="hljs-number">0</span>));
+                showAtLocation(parentView, Gravity.NO_GRAVITY, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+            }
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="hljs-comment">// Activity &#x9000;&#x51FA;&#x65F6;&#x5173;&#x95ED; PopupWindow</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">this</span>.observer = <span class="hljs-keyword">null</span>;
+        dismiss();
+        popupView.getViewTreeObserver().removeOnGlobalLayoutListener(listener);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> KeyboardHeightProvider <span class="hljs-title">setKeyboardHeightObserver</span><span class="hljs-params">(Function1&lt;Integer, Unit&gt; observer)</span> </span>{
+        <span class="hljs-keyword">this</span>.observer = observer;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleOnGlobalLayout</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (activity == <span class="hljs-keyword">null</span> || parentView == <span class="hljs-keyword">null</span> || popupView == <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">return</span>;
+        }
+        Point screenSize = <span class="hljs-keyword">new</span> Point();
+        activity.getWindowManager().getDefaultDisplay().getSize(screenSize);
+
+        Rect rect = <span class="hljs-keyword">new</span> Rect();
+        popupView.getWindowVisibleDisplayFrame(rect);
+
+        <span class="hljs-keyword">int</span> orientation = getScreenOrientation();
+
+        <span class="hljs-keyword">int</span> keyboardHeight = parentView.getHeight() - (rect.bottom - rect.top);
+        isOpen = keyboardHeight &gt; <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (keyboardHeight == <span class="hljs-number">0</span>) {
+            notifyKeyboardHeightChanged(<span class="hljs-number">0</span>, orientation);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            <span class="hljs-keyword">this</span>.keyboardPortraitHeight = keyboardHeight;
+            notifyKeyboardHeightChanged(keyboardPortraitHeight, orientation);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.keyboardLandscapeHeight = keyboardHeight;
+            notifyKeyboardHeightChanged(keyboardLandscapeHeight, orientation);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getScreenOrientation</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> activity.getResources().getConfiguration().orientation;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">notifyKeyboardHeightChanged</span><span class="hljs-params">(<span class="hljs-keyword">int</span> height, <span class="hljs-keyword">int</span> orientation)</span> </span>{
+        <span class="hljs-keyword">if</span> (observer != <span class="hljs-keyword">null</span>) {
+            observer.invoke(height);
+        }
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="sdkinit.html" class="navigation navigation-prev " aria-label="Previous page: SdkInit">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../java/" class="navigation navigation-next " aria-label="Next page: Java">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"软键盘处理","level":"1.2.3","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"实现 mixin 效果","level":"1.3.1","depth":2,"path":"java/mixin.md","ref":"java/mixin.md","articles":[]},{"title":"枚举实现责任链模式","level":"1.3.2","depth":2,"path":"java/mei-ju-shi-xian-ze-ren-lian-mo-shi.md","ref":"java/mei-ju-shi-xian-ze-ren-lian-mo-shi.md","articles":[]}]},"previous":{"title":"SdkInit","level":"1.2.2","depth":2,"path":"android/sdkinit.md","ref":"android/sdkinit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/softkey.md","mtime":"2021-04-30T05:20:09.810Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-30T05:26:42.805Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

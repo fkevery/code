@@ -1,0 +1,364 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>SdkInit · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="softkey.html" />
+    
+    
+    <link rel="prev" href="debug_sp.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="debug_sp.html">
+            
+                <a href="debug_sp.html">
+            
+                    
+                    Debug 版本查看 sp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="sdkinit.html">
+            
+                <a href="sdkinit.html">
+            
+                    
+                    SdkInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="softkey.html">
+            
+                <a href="softkey.html">
+            
+                    
+                    软键盘处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/mixin.html">
+            
+                <a href="../java/mixin.html">
+            
+                    
+                    实现 mixin 效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/mei-ju-shi-xian-ze-ren-lian-mo-shi.html">
+            
+                <a href="../java/mei-ju-shi-xian-ze-ren-lian-mo-shi.html">
+            
+                    
+                    枚举实现责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >SdkInit</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="sdkinit">SdkInit</h1>
+<blockquote>
+<p>&#x5229;&#x7528; CountDownLatch &#x5B9E;&#x73B0; sdk &#x521D;&#x59CB;&#x5316;</p>
+</blockquote>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-kotlin"><span class="hljs-keyword">object</span> SdkInit {
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; 1</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-variable"><span class="hljs-keyword">val</span> countDownLatch</span> = CountDownLatch(<span class="hljs-number">1</span>)
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">initSdk</span><span class="hljs-params">()</span> {</span>
+        thread {
+            Thread.sleep(<span class="hljs-number">3000</span>)
+            countDownLatch.countDown()
+        }
+    }
+    <span class="hljs-comment">// &#x53EA;&#x6709; sdk &#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x4F1A;&#x6267;&#x884C; runnable</span>
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x8C03;&#x7528;&#x65F6; sdk &#x5DF2;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x6267;&#x884C;</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">ensureInit</span><span class="hljs-params">(runnable: <span class="hljs-type">Runnable</span>)</span> {</span>
+        <span class="hljs-comment">// &#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x514D;&#x5F97;&#x963B;&#x585E;&#x5F53;&#x524D;&#x8C03;&#x7528;&#x7EBF;&#x7A0B;</span>
+        thread {
+            countDownLatch.await()
+            runnable.run()
+        }
+    }
+}
+</code></pre>
+<ol>
+<li>&#x5728; ensureInit() &#x4E2D;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x5C06; runnable &#x7684;&#x6267;&#x884C;&#x5207;&#x6362;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="debug_sp.html" class="navigation navigation-prev " aria-label="Previous page: Debug 版本查看 sp">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="softkey.html" class="navigation navigation-next " aria-label="Next page: 软键盘处理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"SdkInit","level":"1.2.2","depth":2,"next":{"title":"软键盘处理","level":"1.2.3","depth":2,"path":"android/softkey.md","ref":"android/softkey.md","articles":[]},"previous":{"title":"Debug 版本查看 sp","level":"1.2.1","depth":2,"path":"android/debug_sp.md","ref":"android/debug_sp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/sdkinit.md","mtime":"2021-04-27T04:48:34.018Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-30T05:26:42.805Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
