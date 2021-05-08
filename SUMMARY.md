@@ -10,4 +10,6 @@
 * [Java](java/README.md)
     * [实现 mixin 效果](java/mixin.md)
     * [枚举实现责任链模式](java/enum.md)
+* [Git](git/README.md)
+    * [合并提交](git/merge.md)
 
