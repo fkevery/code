@@ -50,11 +50,7 @@ setSelectedTabIndicator(R.drawable.drawable_indicator)
 
 # Tab 之间 margin
 
-默认情况下，tab 是没办法指定 margin 的。两个 tab 如果想隔开，就必须指定 padding。但 padding 无法达到下面效果，tab 的左边要与标题对齐：
-
-![实际效果](./img/tablayout1.png)
-
-当然，可以只指定 paddingEnd，但这会影响指示器的居中显示(指示器无法正好出现在文字的中间)，所以**最好的办法就是为 Tab 指定 margin。可自定义一个 View 继承 TabLayout，然后修改 TabView 的 layoutParams**
+默认情况下，tab 是没办法指定 margin 的。两个 tab 如果想隔开，就必须指定 padding。若想指定 margin，需要重新定义 TabLayout，如下：
 
 ```kotlin
 class MarginTabLayout(context: Context, attributeSet: AttributeSet) : TabLayout(context, attributeSet) {
