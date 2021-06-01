@@ -1,0 +1,526 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>代码生成 Drawable · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="用代码实现 drawable">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="tablayout.html" />
+    
+    
+    <link rel="prev" href="softkey.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="debug_sp.html">
+            
+                <a href="debug_sp.html">
+            
+                    
+                    Debug 版本查看 sp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="sdkinit.html">
+            
+                <a href="sdkinit.html">
+            
+                    
+                    SdkInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="softkey.html">
+            
+                <a href="softkey.html">
+            
+                    
+                    软键盘处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.4" data-path="drawable.html">
+            
+                <a href="drawable.html">
+            
+                    
+                    代码生成 Drawable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="tablayout.html">
+            
+                <a href="tablayout.html">
+            
+                    
+                    TabLayout 修改指示器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/mixin.html">
+            
+                <a href="../java/mixin.html">
+            
+                    
+                    实现 mixin 效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/enum.html">
+            
+                <a href="../java/enum.html">
+            
+                    
+                    枚举实现责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../git/">
+            
+                <a href="../git/">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../git/merge.html">
+            
+                <a href="../git/merge.html">
+            
+                    
+                    合并提交
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >代码生成 Drawable</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x9879;&#x76EE;&#x4E2D;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x5404;&#x79CD; drawable&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x5C31;&#x56E0;&#x4E3A;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x989C;&#x8272;&#x5C31;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; xml &#x6587;&#x4EF6;&#xFF0C;&#x592A;&#x9EBB;&#x70E6;&#x3002;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x5C31;&#x662F;<strong>&#x7528;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x5404;&#x79CD; drawable</strong>&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5C06; drawable &#x5206;&#x4E3A;&#x4E24;&#x79CD;&#x7EF4;&#x5EA6;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A; drawable &#x7684;&#x6700;&#x7EC8;&#x751F;&#x6210;&#x90FD;&#x662F;&#x7531;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#x914D;&#x5408;&#x5B8C;&#x6210;&#xFF1A;</p>
+<ol>
+<li>&#x5185;&#x5BB9;&#xFF1A;&#x5B9E;&#x5FC3;&#x6216;&#x7A7A;&#x5FC3;</li>
+<li>&#x5F62;&#x72B6;&#xFF1A;&#x692D;&#x5706;/&#x5706;&#x3001;&#x77E9;&#x5F62;&#x3001;&#x5706;&#x89D2;&#x77E9;&#x5F62;</li>
+</ol>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-kotlin"><span class="hljs-keyword">object</span> DrawableEx {
+    <span class="hljs-comment">/**
+     * &#x5B9E;&#x5FC3;&#x692D;&#x5706;/&#x5706;
+     * **&#x5982;&#x679C; View &#x7684;&#x5BBD;&#x9AD8;&#x76F8;&#x540C;&#xFF0C;&#x5C31;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5706;**
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solidOval</span><span class="hljs-params">(color: <span class="hljs-type">Int</span>)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(color = color)
+        <span class="hljs-comment">// &#x6BCF;&#x4E00;&#x4E2A; drawable &#x5C31;&#x662F;&#x5185;&#x5BB9;&#x4E0E;&#x5F62;&#x72B6;&#x7EC4;&#x5408;&#x5B8C;&#x6210;&#xFF0C;&#x56E0;&#x6B64;&#x4ECE;&#x679A;&#x4E3E; content &#x4E2D;&#x53D6;&#x4E00;&#x4E2A;&#xFF0C;&#x4ECE; Shape &#x4E2D;&#x53D6;&#x4E00;&#x4E2A;&#xFF0C;&#x4E24;&#x8005;&#x4F9D;&#x6B21;&#x5904;&#x7406;</span>
+        <span class="hljs-comment">// &#x6700;&#x7EC8;&#x5F97;&#x5230; drawable</span>
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.SOLID, DrawableHandler.Shape.OVAL).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+
+    <span class="hljs-comment">/**
+     * &#x7A7A;&#x5FC3;&#x692D;&#x5706;/&#x5706;&#x3002;**&#x5982;&#x679C; View &#x7684;&#x5BBD;&#x9AD8;&#x76F8;&#x540C;&#xFF0C;&#x5C31;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5706;**
+     * [stroke] &#x5355;&#x4F4D; px
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">strokeOval</span><span class="hljs-params">(color: <span class="hljs-type">Int, stroke: Int</span>)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(strokeColor = color, stroke = stroke)
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.STROKE, DrawableHandler.Shape.OVAL).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+
+    <span class="hljs-comment">/**
+     * &#x5B9E;&#x5FC3;&#x77E9;&#x5F62;
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solidRect</span><span class="hljs-params">(color: <span class="hljs-type">Int</span>)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(color = color)
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.SOLID, DrawableHandler.Shape.RECT).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+
+    <span class="hljs-comment">/**
+     * &#x7A7A;&#x5FC3;&#x77E9;&#x5F62;
+     * [stroke] &#x5355;&#x4F4D; px
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">strokeRect</span><span class="hljs-params">(strokeColor: <span class="hljs-type">Int, stroke: Int</span> = 1)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(strokeColor = strokeColor, stroke = stroke)
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.STROKE, DrawableHandler.Shape.RECT).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+
+    <span class="hljs-comment">/**
+     * &#x5706;&#x89D2;&#x5B9E;&#x5FC3;&#x77E9;&#x5F62;
+     * [radius] &#x5706;&#x89D2;&#x534A;&#x5F84;&#xFF0C;&#x5355;&#x4F4D; px
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">roundSolidRect</span><span class="hljs-params">(color: <span class="hljs-type">Int, radius: Float</span>)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(color = color, cornerRadius = radius)
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.SOLID, DrawableHandler.Shape.ROUND).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+
+    <span class="hljs-comment">/**
+     * &#x5706;&#x89D2;&#x7A7A;&#x5FC3;&#x77E9;&#x5F62;
+     * [stroke] &#x5355;&#x4F4D; px
+     * [radius] &#x5706;&#x89D2;&#x534A;&#x5F84;&#xFF0C;&#x5355;&#x4F4D; px
+     */</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">roundStrokeRect</span><span class="hljs-params">(color: <span class="hljs-type">Int, stroke: Int, radius: Float</span>)</span>: Drawable {</span>
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> drawable</span> = GradientDrawable()
+        <span class="hljs-variable"><span class="hljs-keyword">val</span> config</span> = DrawableConfig(stroke = stroke, strokeColor = color, cornerRadius = radius)
+        arrayOf<span class="hljs-type">&lt;DrawableHandler&gt;</span>(DrawableHandler.Content.STROKE, DrawableHandler.Shape.ROUND).forEach {
+            it.handle(drawable, config)
+        }
+        <span class="hljs-keyword">return</span> drawable
+    }
+    <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E0D;&#x540C;&#x7684;&#x679A;&#x4E3E;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x5C01;&#x88C5;&#x7C7B;</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DrawableConfig</span></span>(<span class="hljs-variable"><span class="hljs-keyword">val</span> color</span>: <span class="hljs-keyword">Int</span> = Color.TRANSPARENT, <span class="hljs-variable"><span class="hljs-keyword">val</span> stroke</span>: <span class="hljs-keyword">Int</span> = <span class="hljs-number">0</span>, <span class="hljs-variable"><span class="hljs-keyword">val</span> strokeColor</span>: <span class="hljs-keyword">Int</span> = Color.TRANSPARENT, <span class="hljs-variable"><span class="hljs-keyword">val</span> cornerRadius</span>: <span class="hljs-keyword">Float</span> = <span class="hljs-number">0</span>f)
+
+    <span class="hljs-comment">// &#x6BCF;&#x4E00;&#x4E2A;&#x679A;&#x4E3E;&#x90FD;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;</span>
+    interface DrawableHandler {
+        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span></span>
+        <span class="hljs-comment">// &#x5B9E;&#x5FC3;&#x7A7A;&#x5FC3;</span>
+        <span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Content</span> : <span class="hljs-type">DrawableHandler {</span></span>
+            SOLID {
+                <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span> {</span>
+                    drawable.setColor(config.color)
+                }
+            },
+            STROKE {
+                <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span> {</span>
+                    drawable.setStroke(config.stroke, config.strokeColor)
+                }
+
+            }
+        }
+        <span class="hljs-comment">// &#x5F62;&#x72B6;</span>
+        <span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span> : <span class="hljs-type">DrawableHandler {</span></span>
+
+            RECT {
+                <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span> {</span>
+                    drawable.shape = GradientDrawable.RECTANGLE
+                    drawable.cornerRadius = <span class="hljs-number">0</span>f
+                }
+            },
+
+            ROUND {
+                <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span> {</span>
+                    drawable.shape = GradientDrawable.RECTANGLE
+                    drawable.cornerRadius = config.cornerRadius
+                }
+            },
+            OVAL {
+                <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">handle</span><span class="hljs-params">(drawable: <span class="hljs-type">GradientDrawable, config: DrawableConfig</span>)</span> {</span>
+                    drawable.shape = GradientDrawable.OVAL
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="softkey.html" class="navigation navigation-prev " aria-label="Previous page: 软键盘处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="tablayout.html" class="navigation navigation-next " aria-label="Next page: TabLayout 修改指示器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"description":"用代码实现 drawable","title":"代码生成 Drawable","level":"1.2.4","depth":2,"next":{"title":"TabLayout 修改指示器","level":"1.2.5","depth":2,"path":"android/tablayout.md","ref":"android/tablayout.md","articles":[]},"previous":{"title":"软键盘处理","level":"1.2.3","depth":2,"path":"android/softkey.md","ref":"android/softkey.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/drawable.md","mtime":"2021-05-08T10:05:31.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-01T10:15:07.538Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

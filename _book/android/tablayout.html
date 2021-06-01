@@ -1,0 +1,470 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TabLayout 修改指示器 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="tablayout 使用小细节处理">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../java/" />
+    
+    
+    <link rel="prev" href="drawable.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Android
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="debug_sp.html">
+            
+                <a href="debug_sp.html">
+            
+                    
+                    Debug 版本查看 sp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="sdkinit.html">
+            
+                <a href="sdkinit.html">
+            
+                    
+                    SdkInit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="softkey.html">
+            
+                <a href="softkey.html">
+            
+                    
+                    软键盘处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="drawable.html">
+            
+                <a href="drawable.html">
+            
+                    
+                    代码生成 Drawable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="tablayout.html">
+            
+                <a href="tablayout.html">
+            
+                    
+                    TabLayout 修改指示器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../java/">
+            
+                <a href="../java/">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../java/mixin.html">
+            
+                <a href="../java/mixin.html">
+            
+                    
+                    实现 mixin 效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../java/enum.html">
+            
+                <a href="../java/enum.html">
+            
+                    
+                    枚举实现责任链模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../git/">
+            
+                <a href="../git/">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../git/merge.html">
+            
+                <a href="../git/merge.html">
+            
+                    
+                    合并提交
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TabLayout 修改指示器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>TabLayout &#x4F7F;&#x7528;&#x65F6;&#x6709;&#x4EE5;&#x4E0B;&#x95EE;&#x9898;&#x9700;&#x8981;&#x89E3;&#x51B3;&#xFF1A;</p>
+<h1 id="padding">padding</h1>
+<p>TabLayout &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x6BCF;&#x4E00;&#x4E2A; Tab &#x90FD;&#x4F1A;&#x6709;&#x5DE6;&#x53F3; padding&#xFF0C;&#x53EF;&#x5728; xml &#x901A;&#x8FC7;&#x8BBE;&#x7F6E; tabPaddingEnd/Start &#x53D6;&#x6D88;</p>
+<pre><code class="lang-xml">app:tabPaddingEnd=&quot;0dp&quot;
+app:tabPaddingStart=&quot;0dp&quot;
+</code></pre>
+<h1 id="tabindicator&#x6307;&#x793A;&#x5668;">TabIndicator(&#x6307;&#x793A;&#x5668;)</h1>
+<h2 id="&#x957F;&#x77ED;">&#x957F;&#x77ED;</h2>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x6307;&#x793A;&#x5668;&#x7684;&#x5BBD;&#x5EA6;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<ol>
+<li>&#x8DDF;&#x5185;&#x5BB9;&#x4E00;&#x6837;&#x5BBD;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x6587;&#x5B57;&#x6709;&#x591A;&#x5BBD;&#xFF0C;&#x6307;&#x793A;&#x5668;&#x663E;&#x793A;&#x591A;&#x5BBD;</li>
+<li>&#x8DDF; Tab &#x4E00;&#x6837;&#x5BBD;&#x3002;&#x6B64;&#x65F6;&#x5305;&#x62EC;&#x8BBE;&#x7F6E;&#x7684; tabPaddingEnd/Start</li>
+</ol>
+<p>&#x4F46;<strong>&#x9700;&#x6C42;&#x6307;&#x672A;&#x5668;&#x7684;&#x5BBD;&#x5EA6;&#x6BD4;&#x6587;&#x5B57;&#x8981;&#x77ED;</strong>&#xFF0C;&#x6B64;&#x65F6;<strong>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49; drawable&#xFF0C;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x6307;&#x5B9A;&#x5BBD;&#x5EA6;</strong></p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">layer-list</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="hljs-attr">android:shape</span>=<span class="hljs-string">&quot;rectangle&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">shape</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">size</span>
+                <span class="hljs-attr">android:width</span>=<span class="hljs-string">&quot;26dp&quot;</span>
+                <span class="hljs-attr">android:height</span>=<span class="hljs-string">&quot;2dp&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">solid</span> <span class="hljs-attr">android:color</span>=<span class="hljs-string">&quot;#FE3B30&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">corners</span> <span class="hljs-attr">android:radius</span>=<span class="hljs-string">&quot;2dp&quot;</span> /&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">shape</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">layer-list</span>&gt;</span>
+</code></pre>
+<h2 id="&#x989C;&#x8272;">&#x989C;&#x8272;</h2>
+<p>&#x867D;&#x7136;&#x53EF;&#x901A;&#x8FC7; drawable &#x7684; xml &#x6587;&#x4EF6;&#x6307;&#x5B9A;&#x6307;&#x793A;&#x5668;&#x6837;&#x5F0F;&#xFF0C;&#x4F46;<strong>xml &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x989C;&#x8272;&#x65E0;&#x6548;&#xFF0C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x91CD;&#x65B0;&#x8BBE;&#x7F6E;</strong></p>
+<pre><code class="lang-kotlin"><span class="hljs-comment">// &#x4F7F;&#x7528; TabLayout &#x8C03;&#x7528;</span>
+setSelectedTabIndicatorColor(Color.parseColor(<span class="hljs-string">&quot;#232930&quot;</span>))
+<span class="hljs-comment">// drawable_indicator &#x5C31;&#x662F;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684; xml &#x6587;&#x4EF6;</span>
+setSelectedTabIndicator(R.drawable.drawable_indicator)
+</code></pre>
+<h2 id="&#x5706;&#x89D2;">&#x5706;&#x89D2;</h2>
+<p>&#x5982;&#x679C;&#x6307;&#x793A;&#x5668;&#x8981;&#x663E;&#x793A;&#x5706;&#x89D2;&#xFF0C;&#x9664;&#x4E86;&#x5728; xml &#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x989D;&#x5916;&#x6307;&#x5B9A;&#x6307;&#x793A;&#x5668;&#x7684;&#x9AD8;&#x5EA6;</p>
+<pre><code class="lang-java">val d = ResourcesCompat.getDrawable(resources, R.drawable.tab_indicator, <span class="hljs-keyword">null</span>)?.apply {
+    setBounds(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, intrinsicWidth, dp2px(<span class="hljs-number">2.0f</span>)) <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x9AD8;&#x5EA6;</span>
+}
+<span class="hljs-comment">// &#x5C06; drawable &#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x793A;&#x5668;</span>
+setSelectedTabIndicator(d)
+</code></pre>
+<p>&#x540C;&#x65F6;&#xFF0C;tablayout &#x4E5F;&#x8981;&#x52A0;&#x4E0A;&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-xml">app:tabIndicatorHeight=&quot;2dp&quot;
+</code></pre>
+<h1 id="tab-&#x4E4B;&#x95F4;-margin">Tab &#x4E4B;&#x95F4; margin</h1>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;tab &#x662F;&#x6CA1;&#x529E;&#x6CD5;&#x6307;&#x5B9A; margin &#x7684;&#x3002;&#x4E24;&#x4E2A; tab &#x5982;&#x679C;&#x60F3;&#x9694;&#x5F00;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x6307;&#x5B9A; padding&#x3002;&#x82E5;&#x60F3;&#x6307;&#x5B9A; margin&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x5B9A;&#x4E49; TabLayout&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-kotlin"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MarginTabLayout</span></span>(context: Context, attributeSet: AttributeSet) : TabLayout(context, attributeSet) {
+
+    <span class="hljs-variable"><span class="hljs-keyword">var</span> tabRightMargin</span>: <span class="hljs-keyword">Int</span> = <span class="hljs-number">-1</span>
+    <span class="hljs-comment">// &#x6BCF;&#x751F;&#x6210;&#x4E00;&#x4E2A; Tab &#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">addTab</span><span class="hljs-params">(tab: <span class="hljs-type">Tab, position: Int, setSelected: Boolean</span>)</span> {</span>
+        super.addTab(tab, position, setSelected)
+        addMargin(tab)
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">addMargin</span><span class="hljs-params">(tab: <span class="hljs-type">Tab</span>)</span> {</span>
+        <span class="hljs-keyword">if</span> (tabRightMargin == <span class="hljs-number">-1</span>) {
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-comment">// tab.view &#x5C31;&#x662F; TabView&#xFF0C;&#x5B83;&#x662F;&#x6BCF;&#x4E00;&#x4E2A; Tab &#x771F;&#x6B63;&#x663E;&#x793A;&#x7684; View</span>
+        tab.view.apply {
+            <span class="hljs-variable"><span class="hljs-keyword">val</span> layoutParams</span> = this.layoutParams
+                    ?: MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            <span class="hljs-keyword">if</span> (layoutParams <span class="hljs-keyword">is</span> MarginLayoutParams) {
+                layoutParams.rightMargin = tabRightMargin
+            }
+            this.layoutParams = layoutParams
+        }
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="drawable.html" class="navigation navigation-prev " aria-label="Previous page: 代码生成 Drawable">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../java/" class="navigation navigation-next " aria-label="Next page: Java">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"description":"tablayout 使用小细节处理","title":"TabLayout 修改指示器","level":"1.2.5","depth":2,"next":{"title":"Java","level":"1.3","depth":1,"path":"java/README.md","ref":"java/README.md","articles":[{"title":"实现 mixin 效果","level":"1.3.1","depth":2,"path":"java/mixin.md","ref":"java/mixin.md","articles":[]},{"title":"枚举实现责任链模式","level":"1.3.2","depth":2,"path":"java/enum.md","ref":"java/enum.md","articles":[]}]},"previous":{"title":"代码生成 Drawable","level":"1.2.4","depth":2,"path":"android/drawable.md","ref":"android/drawable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"android/tablayout.md","mtime":"2021-06-01T10:12:19.880Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-01T10:15:07.538Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
