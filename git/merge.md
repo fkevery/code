@@ -7,6 +7,7 @@ description: 使用 rebase 合并提交
 1. 使用 **git rebase -i &lt;commitId\>**
 2. 弹出界面中，**将要合并的 commit 前的 pick 修改为 s**
 3. 弹出新的界面中，输入新的 commit 信息
+4. 通过 rebase 修改已提交至远程仓库的 commit，**必须要使用强制 push**
 
 # 演示
 
