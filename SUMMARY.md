@@ -13,4 +13,6 @@
     * [枚举实现责任链模式](java/enum.md)
 * [Git](git/README.md)
     * [合并提交](git/merge.md)
+* [其他](other/README.md)
+    * [二进制操作](other/bit.md)
 
