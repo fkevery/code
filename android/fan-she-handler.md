@@ -21,7 +21,7 @@ final Callback mCallback;
 
 解决方法是：使用 <mark style="color:red;">**superclass 而不是直接使用 Handler 自身的 class**</mark>
 
-```java
+```kotlin
 // 拿到 Handler 对象
 val mH: Handler = getDeclaredField("mH").run {
     isAccessible = true
