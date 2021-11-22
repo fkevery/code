@@ -2,28 +2,28 @@
 description: tablayout 使用小细节处理
 ---
 
+# TabLayout 修改指示器
+
 TabLayout 使用时有以下问题需要解决：
 
-# padding
+## padding
 
 TabLayout 默认情况下每一个 Tab 都会有左右 padding，可在 xml 通过设置 tabPaddingEnd/Start 取消
 
-```xml
+```markup
 app:tabPaddingEnd="0dp"
 app:tabPaddingStart="0dp"
 ```
 
-# TabIndicator(指示器)
+## TabIndicator(指示器)
 
-## 长短
+### 长短
 
-默认情况下指示器的宽度只有两种形式：
-1. 跟内容一样宽。也就是文字有多宽，指示器显示多宽
-2. 跟 Tab 一样宽。此时包括设置的 tabPaddingEnd/Start
+默认情况下指示器的宽度只有两种形式： 1. 跟内容一样宽。也就是文字有多宽，指示器显示多宽 2. 跟 Tab 一样宽。此时包括设置的 tabPaddingEnd/Start
 
 但**需求指未器的宽度比文字要短**，此时**可以自定义 drawable，可以任意指定宽度**
 
-```xml
+```markup
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
@@ -42,7 +42,7 @@ app:tabPaddingStart="0dp"
 </layer-list>
 ```
 
-## 颜色
+### 颜色
 
 虽然可通过 drawable 的 xml 文件指定指示器样式，但**xml 中定义的颜色无效，必须通过代码重新设置**
 
@@ -53,7 +53,7 @@ setSelectedTabIndicatorColor(Color.parseColor("#232930"))
 setSelectedTabIndicator(R.drawable.drawable_indicator)
 ```
 
-## 圆角
+### 圆角
 
 如果指示器要显示圆角，除了在 xml 文件中指定外，还需要额外指定指示器的高度
 
@@ -66,11 +66,12 @@ setSelectedTabIndicator(d)
 ```
 
 同时，tablayout 也要加上属性：
-```xml
+
+```markup
 app:tabIndicatorHeight="2dp"
 ```
 
-# Tab 之间 margin
+## Tab 之间 margin
 
 默认情况下，tab 是没办法指定 margin 的。两个 tab 如果想隔开，就必须指定 padding。若想指定 margin，需要重新定义 TabLayout，如下：
 
@@ -100,4 +101,3 @@ class MarginTabLayout(context: Context, attributeSet: AttributeSet) : TabLayout(
     }
 }
 ```
-
