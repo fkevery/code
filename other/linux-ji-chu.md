@@ -23,6 +23,8 @@ description: linux 基础知识，平时使用时总结的
 | PSS     | Proportional Set Size | 实际物理内存。但<mark style="color:red;">将共享库占用共享按进程数平均分</mark> | 用处一般                                 |
 | USS     | Unique Set Size       |  实际物理内存。<mark style="color:red;">不包含共享库占用的内存</mark>     | <mark style="color:red;">用处最大</mark> |
 
+上面一直提到共享内存，例如 A, B 打开同一个文件，这个文件使用的内存就是共享的。
+
 ## 系统文件
 
 ### stat 文件
@@ -51,7 +53,13 @@ linux 一共有三个 stat 文件，分别记录了系统的整体信息，某�
 2. top -d \[time]：指定刷新屏幕时间间隔
 3. top -H -p \[pid]：查看 pid 进程下所有的线程
 
-输出信息有：
+![](<../.gitbook/assets/iShot2021-11-26 15.25.22.png>)
+
+上面信息重点关注：
+
+1. <mark style="color:red;">swap 的 used：</mark>如果数据在<mark style="color:red;">不断变化</mark>，说明在进程内存与 swap 分区的数据交换<mark style="color:red;">，内存真的不够用了</mark>
+
+其余信息如下：
 
 1. PR 与 NI：进程优先级，<mark style="color:red;">值越小优先级越高</mark>
 2. RES 与 SHR：实际占用的物理内存与共享内存大小
@@ -88,3 +96,5 @@ android 中线程状态分两部分，一部分是 Thread.java  中 State 枚举
 ![](<../.gitbook/assets/iShot2021-11-24 14.21.02.png>)
 
 从上图可以看出，native 层将 time\_wait 细化成 timedWaiting 以及 sleeping，分别对应 wait(timeout) 及 sleep() 两个方法。这明显更有利于分析。
+
+上图中有两个关于 gc 的：<mark style="color:red;">kWaitingForGcToComplete 与 kWaitingPerformingGc</mark>，前者表示正在等待 GC，后者表示正在执行 GC，所以主线程出现前者时就应该考虑搜索后者看哪个线程正在执行 gc。

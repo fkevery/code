@@ -2,6 +2,7 @@
 
 * [简介](README.md)
 * [Android](android/README.md)
+  * [adb shell dumpsys 命令](android/adb-shell-dumpsys-ming-ling.md)
   * [反射 Handler](android/fan-she-handler.md)
   * [Debug 版本查看 sp](android/debug\_sp.md)
   * [SdkInit](android/sdkinit.md)
