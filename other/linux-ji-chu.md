@@ -52,6 +52,11 @@ linux 一共有三个 stat 文件，分别记录了系统的整体信息，某�
 1. top -p \[pid] 通过指定 pid 监控指定的进程。可以多次使用 -p 监控多个进程，如 top -p P1 -p P2
 2. top -d \[time]：指定刷新屏幕时间间隔
 3. top -H -p \[pid]：查看 pid 进程下所有的线程
+4. 可结合 grep 命令查看指定进程在一定时间内 cpu 使用情况，要注意**如果包名过长，可能 grep 不到，缩短点即可**
+
+```
+adb shell top -d 5 | grep com.sogle  // 查看 com.sogle 应用
+```
 
 ![](<../.gitbook/assets/iShot2021-11-26 15.25.22.png>)
 
@@ -98,3 +103,8 @@ android 中线程状态分两部分，一部分是 Thread.java  中 State 枚举
 从上图可以看出，native 层将 time\_wait 细化成 timedWaiting 以及 sleeping，分别对应 wait(timeout) 及 sleep() 两个方法。这明显更有利于分析。
 
 上图中有两个关于 gc 的：<mark style="color:red;">kWaitingForGcToComplete 与 kWaitingPerformingGc</mark>，前者表示正在等待 GC，后者表示正在执行 GC，所以主线程出现前者时就应该考虑搜索后者看哪个线程正在执行 gc。
+
+线程处于 native 状态说明在执行 jni 层代码，但这并不意味着线程没有问题，比如它正通过 binder 调用第三方应用，里面导致被阻塞出现  anr。
+
+suspend 表示线程被暂停。有两种可能：自己太忙，cpu 强制暂停；cpu 太忙，高优先级的任务占用了大量的资源，进程得不到执行
+
