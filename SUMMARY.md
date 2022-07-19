@@ -19,5 +19,6 @@
 * [Git](git/README.md)
   * [合并提交](git/merge.md)
 * [其他](other/README.md)
+  * [MAT](other/mat.md)
   * [二进制操作](other/bit.md)
   * [Linux 基础](other/linux-ji-chu.md)
