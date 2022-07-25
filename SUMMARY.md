@@ -22,3 +22,5 @@
   * [MAT](other/mat.md)
   * [二进制操作](other/bit.md)
   * [Linux 基础](other/linux-ji-chu.md)
+* [ASM](asm/README.md)
+  * [基本流程](asm/ji-ben-liu-cheng.md)
