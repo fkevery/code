@@ -94,6 +94,7 @@ public static void main(String[] args) {
                                 mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Exception", "printStackTrace", "()V", false);
 
                                 //  定义 label3，也就是方法的正常结束
+                                // 注意这三个方法的调用顺序，一定不能变
                                 mv.visitLabel(label3);
                                 super.visitMaxs(maxStack, maxLocals);
                                 mv.visitInsn(RETURN);
@@ -118,6 +119,8 @@ public static void main(String[] args) {
         }
     }
 ```
+
+<mark style="color:red;">**在 visitMaxs 的最后三个语句的顺序一定不能错**</mark>。顺序错乱以后生成的 class 文件便无法运行
 
 ## asm 代码
 
