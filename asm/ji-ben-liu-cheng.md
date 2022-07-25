@@ -29,6 +29,7 @@ new ClassReader(clazzName).accept(visitor, ClassReader.SKIP_FRAMES | ClassReader
 ```
 
 1. 创建 ClassWriter 时传入 <mark style="color:red;">COMPUTE\_FRAMES</mark>，那么使用 MethodVisitor 生成方法体时，<mark style="color:red;">可以不调用 visitFrame，visitMaxs() 也可随便传值</mark>
+2. 每一个类都有一个版本，对应 class 文件中的 majoy\_version 与 minor\_version。在 ClassReader 会将该信息传递到 ClassVisitor#visit() 中，在 <mark style="color:red;">asm 中对应的是 Opcodes.VXXX 系列</mark>。
 
 ## 方法添加 try-catch
 
