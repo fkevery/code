@@ -31,9 +31,50 @@ new ClassReader(clazzName).accept(visitor, ClassReader.SKIP_FRAMES | ClassReader
 1. 创建 ClassWriter 时传入 <mark style="color:red;">COMPUTE\_FRAMES</mark>，那么使用 MethodVisitor 生成方法体时，<mark style="color:red;">可以不调用 visitFrame，visitMaxs() 也可随便传值</mark>
 2. 每一个类都有一个版本，对应 class 文件中的 majoy\_version 与 minor\_version。在 ClassReader 会将该信息传递到 ClassVisitor#visit() 中，在 <mark style="color:red;">asm 中对应的是 Opcodes.VXXX 系列</mark>。
 
-## 方法添加 try-catch
+## 字段
 
-由于要修改方法体，所以需要修改 ClassVisitor#visitMethod 的返回值。只要<mark style="color:red;">调用 MethodVisitor#visitxxx 方法即向方法体中添加操作</mark>。
+### 删除
+
+> &#x20;<mark style="color:red;">ClassVisitor#visitField() 返回 null</mark> 即可
+
+### 添加
+
+> 向 class 添加字段，修改的是 class 文件，所以<mark style="color:red;">在 class 结尾处调用 visitField() 方法</mark>
+
+1. <mark style="color:red;">**不是修改 FieldVisitor**</mark>。一个 FieldVisitor 代表一个字段，新添加的必须要新建 FieldVisitor，因此<mark style="color:red;">**需要重新调用 ClassVisitor#visitField() 方法**</mark>
+2. 不要在 visitField() 中添加字段，因为有可能添加重复。下面的示例只是演示，没有考虑字段重复。
+
+```java
+ClassVisitor visitor = new ClassVisitor(Opcodes.ASM9, writer) {
+    @Override
+    public void visitEnd() {
+        // 类访问结束，重新调用 visitField() 添加一个新字段
+        // 最后一个参数 1 表示字段在声明时的值
+        // 添加的字段为：public final int addTo = 1;
+        FieldVisitor fv = cv.visitField(Opcodes.ACC_FINAL | Opcodes.ACC_PUBLIC,
+         "addTo", "I", null, 1);
+        fv.visitEnd();
+        super.visitEnd();
+    }
+};
+new ClassReader(clazzName).accept(visitor, ClassReader.SKIP_FRAMES | ClassReader.SKIP_DEBUG);
+```
+
+## 方法
+
+### 删除
+
+> <mark style="color:red;">visitMethod 直接返回 null 即可</mark>
+
+### 添加
+
+跟字段的添加相同，<mark style="color:red;">只在 visitEnd() 中重新调用 ClassVisitor#visitMethod()</mark>&#x20;
+
+### 添加 try-catch
+
+> 由于要修改方法体，所以需要修改 ClassVisitor#visitMethod 的返回值。只要<mark style="color:red;">调用 MethodVisitor#visitxxx 方法即向方法体中添加操作</mark>。
+
+示例代码如下：
 
 ```java
 public static void main(String[] args) {
@@ -122,7 +163,7 @@ public static void main(String[] args) {
 
 <mark style="color:red;">**在 visitMaxs 的最后三个语句的顺序一定不能错**</mark>。顺序错乱以后生成的 class 文件便无法运行
 
-## asm 代码
+## 查看 asm 代码
 
 在写 asm 时，如果想自己写 asm 代码，基本上不可能。<mark style="color:red;">asm 提供的 TraceClassVisitor 可帮助得到相应的 asm 代码</mark>。
 
