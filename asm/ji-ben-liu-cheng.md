@@ -4,7 +4,9 @@ description: asm 常用使用流程
 
 # 基本流程
 
-## 类关系
+## 类
+
+### 关系
 
 > <mark style="color:red;">整个 class 的处理是链条式。起于 ClassReader 读取 class 内容，终于 ClassWriter 将所有内容转成 byte 数组</mark>
 
@@ -15,9 +17,10 @@ description: asm 常用使用流程
 * ClassWriter 是最后一级，**它的 toByteArray() 会将所有处理过、未处理过的内容转成 byte 数组，将该数组存储到一个 .class 文件中，就会生成一个合规的 class 文件**
   * ClassWriter 在生成 class 文件时，会使用自己内部记录的 FieldVisitor、MethodVisitor 去生成字段、方法。因此，如果<mark style="color:red;">修改字段、方法，</mark><mark style="color:red;">**必须先调用 ClassWriter 相应方法**</mark><mark style="color:red;">，用拿到的返回值构建新的 FieldVisitor、MethodVisitor</mark>。
 
-## MethodVisitor
+### MethodVisitor
 
-1. <mark style="color:red;">visitMaxs</mark>()：设置局部变量表与操作数栈的最大深度。**调用到该方法时，方法体的所有指令都已访问**到。因此，<mark style="color:red;">该方法里添加的指令理论上</mark><mark style="color:red;">**都在 return 语句以后**</mark>。
+1. <mark style="color:red;">visitMaxs</mark>()：设置局部变量表与操作数栈的最大深度。**调用到该方法时，方法体的所有指令都已访问**到。因此，<mark style="color:red;">该方法里添加的指令理论上</mark><mark style="color:red;">**都在 return 语句以后**</mark>。但要注意，如果方法中有使用 goto 进行跳转，把代码写到 return 以后也无所谓。
+   1. <mark style="color:red;">visitMaxs() 并不会在方法体中添加额外的指令</mark>。
 
 ## 各种参数
 
