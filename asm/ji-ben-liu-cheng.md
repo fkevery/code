@@ -15,6 +15,10 @@ description: asm 常用使用流程
 * ClassWriter 是最后一级，**它的 toByteArray() 会将所有处理过、未处理过的内容转成 byte 数组，将该数组存储到一个 .class 文件中，就会生成一个合规的 class 文件**
   * ClassWriter 在生成 class 文件时，会使用自己内部记录的 FieldVisitor、MethodVisitor 去生成字段、方法。因此，如果<mark style="color:red;">修改字段、方法，</mark><mark style="color:red;">**必须先调用 ClassWriter 相应方法**</mark><mark style="color:red;">，用拿到的返回值构建新的 FieldVisitor、MethodVisitor</mark>。
 
+## MethodVisitor
+
+1. <mark style="color:red;">visitMaxs</mark>()：设置局部变量表与操作数栈的最大深度。**调用到该方法时，方法体的所有指令都已访问**到。因此，<mark style="color:red;">该方法里添加的指令理论上</mark><mark style="color:red;">**都在 return 语句以后**</mark>。
+
 ## 各种参数
 
 在构造 ClassReader、ClassWriter、ClassVisitor 时都需要传入不同的 int 值。一般情况下按如下传值：
@@ -110,7 +114,7 @@ public static void main(String[] args) {
                             // 注意这里是重写 visitMaxs() 而不是 visitEnd()
                 
                             @Override
-                            public void visitMaxs(int maxStack, int maxLocals) {
+                            protected void onMethodExit(int opcode) {{
                                 // 到这里，说明正常的方法体已经执行完毕
                                 // 加个 label，表示 try 住的内容
                                 mv.visitLabel(to);
@@ -134,11 +138,8 @@ public static void main(String[] args) {
                                 // 调用它的 printStackTrace()
                                 mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Exception", "printStackTrace", "()V", false);
 
-                                //  定义 label3，也就是方法的正常结束
-                                // 注意这三个方法的调用顺序，一定不能变
+                                // 在方法结束时插入 label3，用于正常执行完成时直接跳转至这里
                                 mv.visitLabel(label3);
-                                super.visitMaxs(maxStack, maxLocals);
-                                mv.visitInsn(RETURN);
                             }
                         };
                     }
@@ -161,11 +162,12 @@ public static void main(String[] args) {
     }
 ```
 
-<mark style="color:red;">**在 visitMaxs 的最后三个语句的顺序一定不能错**</mark>。顺序错乱以后生成的 class 文件便无法运行
+1. onMethodExit() 会在执行到 return，throw 指令时调用，onMethodExit() 执行完后才会执行相应的指令。因此，<mark style="color:red;">onMethodExit() 就是方法执行结束时的回调</mark>。
 
 ## 查看 asm 代码
 
-在写 asm 时，如果想自己写 asm 代码，基本上不可能。<mark style="color:red;">asm 提供的 TraceClassVisitor 可帮助得到相应的 asm 代码</mark>。
+* 在写 asm 时，如果想自己写 asm 代码，基本上不可能。<mark style="color:red;">asm 提供的 TraceClassVisitor 可帮助得到相应的 asm 代码</mark>。
+* 如果想通过查看 asm 代码书写 asm 代码，<mark style="color:red;">**classReader#accept() 中的参数一定要与写的地方一致**</mark>。
 
 ```java
     public static void main(String[] args) {
