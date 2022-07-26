@@ -30,6 +30,43 @@ description: asm 常用使用流程
 2. onMethodEnter()：在 visitCode() 中调用，visitCode() 会先于所有指令执行。因此 <mark style="color:red;">onMethodEnter（） 中插入的代码会出现在所有指令之前</mark>。
    1. visitCode() 中如果处理的是构造函数，并不会回调 onMethodEnter()。因为 Java 规定构造函数中的 this() super() 必须放到第一行。
 
+## Type
+
+> asm 提供的一个工具类
+
+对同一个类，java 代码与 class 文件全量限定名不同：java 代码中包名使用点分隔，而 class 文件中使用 / 分隔（asm 中叫 internal name）。而且方法、字段都有自己的签名。**通过提供的 Type 类可以在不同的模式间转换**
+
+实际使用中 Type 可分为两种：class Type 以及 methodType。前者通过 **Type#getType()** 生成，后者通过 **Type#getMethodType()** 生成。
+
+* **getSort() 返回当前 Type 的类型**，与 Type 内静态常用 INT, METHOD 等比较
+* **getSize() 返回当前 Type 所占 slot 数**。在局部变量表、操作数栈中一个 int 占一个 slot，一个 long/double 占两个 slot。这里返回的就是当前 Type 所能占用的 slot 数量。
+* classType 常用的有：**getClassName()，getInternalName() 与 getDescriptor()**：第一个返回 className，第二个返回 internalName，第三个返回描述。示例如下：
+
+```java
+// 根据 class 创建对应的 Type
+// 也可写成，根据类描述符获取类相关信息，此时就相当于对描述符进行解析
+// Type type = Type.getType("Lcom/sogle/lib/Node2;");
+Type type = Type.getType(Node2.class);
+System.out.println(type.getClassName()); // com.sogle.lib.Node2
+System.out.println(type.getInternalName()); // com/sogle/lib/Node2
+System.out.println(type.getDescriptor()); // Lcom/sogle/lib/Node2;
+```
+
+* methodType 常用的有：**getReturnType 与 getArgumentTypes() 与 getArgumentsAndReturnSizes**。前者返回方法返回值对应的 Type，后者返回方法的参数对应的 Type 数组，最后一个返回参数与返回值所占的 slot 数
+
+```java
+Type type = Type.getMethodType("(IIJ)V");
+System.out.println(type.getReturnType() == Type.VOID_TYPE); // 方法返回值 void
+System.out.println(type.getArgumentTypes().length); // 有三个参数
+
+int sizes = type.getArgumentsAndReturnSizes();
+// 拿到 sizes 后需要再处理一下
+System.out.println(sizes >> 2); // 返回 5，因为还有一个 this。
+System.out.println(sizes & 3); // 返回 0
+```
+
+* 如果 type 指向数组，可通过 getDimensions() 拿到数组的维数，getElementType() 拿到数组元素对应的 type
+
 ## 各种参数
 
 在构造 ClassReader、ClassWriter、ClassVisitor 时都需要传入不同的 int 值。一般情况下按如下传值：
