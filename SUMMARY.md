@@ -24,3 +24,4 @@
   * [Linux 基础](other/linux-ji-chu.md)
 * [ASM](asm/README.md)
   * [基本流程](asm/ji-ben-liu-cheng.md)
+  * [方法操作](asm/fang-fa-cao-zuo.md)
