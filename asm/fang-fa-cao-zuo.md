@@ -101,3 +101,35 @@ public static void main(String[] args) {
 ```
 
 1. onMethodExit() 会在执行到 return，throw 指令时调用，onMethodExit() 执行完后才会执行相应的指令。因此，<mark style="color:red;">onMethodExit() 就是方法执行结束时的回调</mark>。
+
+## 方法前输出参数
+
+由于需要修改方法体，所以需要自定义 MethodVisitor，在 onMethodEnter 中添加输出语句
+
+```java
+protected void onMethodEnter() {
+    Type type = Type.getMethodType(descriptor);
+    // 当前方法非 static 方法，所以第一个参数为 this，占据了局部变量表中的第一个 slot
+    // 所以 offset 偏移 1 位。如果是 static 就为 0
+    // 是不是 static 需要根据 visitMethod 中的 access 判断
+    int offset = 1;
+    // 遍历所有参数
+    for (Type argumentType : type.getArgumentTypes()) {
+        // 这里只挑选两种类型进行处理
+        if (argumentType.getSort() == Type.INT) {
+            super.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+            // 第二个参数为要加载的元素在局部变量表中的位置
+            // 用的是 Iload，处理的是 Int 数字
+            super.visitVarInsn(ILOAD, offset);
+            super.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(I)V", false);
+        }else if (argumentType.getSort() == Type.OBJECT) {
+            super.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+            // 这里用的命令是 aload。处理的是对象
+            super.visitVarInsn(Opcodes.ALOAD, offset);
+            super.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/Object;)V", false);
+        }
+        // 记录偏移量
+        offset += argumentType.getSize();
+    }
+}
+```

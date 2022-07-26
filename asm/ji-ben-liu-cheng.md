@@ -65,7 +65,7 @@ System.out.println(sizes >> 2); // 返回 5，因为还有一个 this。
 System.out.println(sizes & 3); // 返回 0
 ```
 
-* 如果 type 指向数组，可通过 getDimensions() 拿到数组的维数，getElementType() 拿到数组元素对应的 type
+* 如果 type 指向数组，可通过 **getDimensions**() 拿到数组的维数，**getElementType**() 拿到数组元素对应的 type
 
 ## 各种参数
 
