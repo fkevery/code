@@ -21,6 +21,14 @@ description: asm 常用使用流程
 
 1. <mark style="color:red;">visitMaxs</mark>()：设置局部变量表与操作数栈的最大深度。**调用到该方法时，方法体的所有指令都已访问**到。因此，<mark style="color:red;">该方法里添加的指令理论上</mark><mark style="color:red;">**都在 return 语句以后**</mark>。但要注意，如果方法中有使用 goto 进行跳转，把代码写到 return 以后也无所谓。
    1. <mark style="color:red;">visitMaxs() 并不会在方法体中添加额外的指令</mark>
+2. <mark style="color:red;">visitMethodInsn</mark>：调用别的方法时
+
+```java
+// owner 表示被调用的方法所属的类
+// name 表示被调用方法名
+// descriptor 表示被调用方法的描述符
+visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface)
+```
 
 ### AdviceAdapter
 

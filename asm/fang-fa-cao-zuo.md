@@ -133,3 +133,26 @@ protected void onMethodEnter() {
     }
 }
 ```
+
+## 替换调用
+
+> 一定要注意：<mark style="color:red;">保证局部变量表与操作数栈一致</mark>。替换前后的方法可能需要的参数不一致，在替换时要保证两者一致。
+
+1. 替换调用，需要修改方法体，所以需要<mark style="color:red;">自定义 MethodVisitor</mark>。由于是替换调用，所以需要修改其 <mark style="color:red;">visitMethodInsn() 方法</mark>。
+
+```java
+@Override
+public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+    if ("println".equals(name)) {
+        // 将 println 方法替换成自己的
+        // 这里只判断了方法名，正常情况下需要判断各种条件
+        super.visitMethodInsn(Opcodes.INVOKESTATIC, "com/xx/lib/Log", "e", "(Ljava/io/PrintStream;Ljava/lang/String;)V", false);
+    } else {
+        super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
+    }
+}
+```
+
+2\. 为了保证操作数栈的正确性：
+
+* 如果被替换的方法需要的<mark style="color:red;">操作数少，额外在方法参数中添加相应的参数但不使用</mark>。这个思路<mark style="color:red;">**适合由非静态方法转为静态方法调用**</mark>。
