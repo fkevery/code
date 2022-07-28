@@ -156,3 +156,30 @@ public void visitMethodInsn(int opcode, String owner, String name, String descri
 2\. 为了保证操作数栈的正确性：
 
 * 如果被替换的方法需要的<mark style="color:red;">操作数少，额外在方法参数中添加相应的参数但不使用</mark>。这个思路<mark style="color:red;">**适合由非静态方法转为静态方法调用**</mark>。
+
+## 删除语句
+
+> 输出语句一般涉及到多个命令，因此在处理时需要记录前面的命令。使用<mark style="color:red;">状态机模式</mark>
+
+比如要处理的命令涉及 a,b,c 三个指令。遇到  a 指令时将状态变为 1，遇到  b 指令时如果状态是 1 且指令满足要求，就将状态记为 2；遇到 c 指令，且状态是 2 表示这是要处理的三条指令，直接返回即可。如果中途遇到其余指令，就需要将状态回归到最原始状态，即 0。
+
+下面以删除 system.out.println 为例进行说明。
+
+因为要处理的是方法内部逻辑，所以需要自定义 MethodVisitor。
+
+![](../.gitbook/assets/image.png)
+
+上面缺了最后一步，如果中间遇到别的指令怎么办？就需要将原来被拦截的指令再次发出去
+
+```java
+if (state == 1) {
+    // 此种状态只拦截了 System.out
+    super.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+} else if (state == 2) {
+    // 此种状态拦截了 System.out 与 加载操作数
+    super.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
+    super.visitLdcInsn(msg);
+}
+// 将状态回 0
+state = 0;
+```
