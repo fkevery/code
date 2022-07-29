@@ -64,6 +64,25 @@ invokeVirtual(Type.getType(PrintStream.class), Method.getMethod("void println(St
 
 有时候需要在方法内额外添加局部变量，这可能会导致已有的局部变量表发生变化，而 LocalVariableSorter 会保证变化后的局部变量表是正确的。
 
+## Method
+
+> asm 自带的 method 类，非反射中的
+
+在使用 GeneratorAdapter 中的快捷方法调用某个方法时，经常需要传入 Method 对象。比如下面的
+
+```java
+// 第二个参数就是 Method
+public void invokeVirtual(final Type owner, final Method method)
+```
+
+<mark style="color:red;">**通过 Method#.getMethod() 获取 Method 对象，参数就是方法定义时从返回值到参数全复制**</mark><mark style="color:red;">。</mark>如：
+
+```java
+Method.getMethod("android.content.res.Resources getResources()")
+```
+
+有一点要注意：<mark style="color:red;">**非基本数据类型，一定要写全类名**</mark>。否则默认情况下会到 java.lang 下找，然后就运行不起来了。
+
 ## Type
 
 > asm 提供的一个工具类
