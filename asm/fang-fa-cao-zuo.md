@@ -183,3 +183,43 @@ if (state == 1) {
 // 将状态回 0
 state = 0;
 ```
+
+## 方法运行时间统计
+
+> 统计方法运行时间需要额外添加局部变量，就需要额外使用到 <mark style="color:red;">LocalVariablesSorter</mark> 中的功能
+
+1. <mark style="color:red;">由于 AdviceAdapter 是 LocalVariablesSorter 子类</mark>，所以这里直接使用 AdviceAdapter 即可
+
+```java
+private int slotIndex;
+@Override
+protected void onMethodEnter() {
+    // LocalVariablesSorter 中方法，表示要新添加一个 long 类型的局部变量
+    // 返回参数是新变量在局部变量表中的下标
+    slotIndex = newLocal(Type.LONG_TYPE);
+    invokeStatic(Type.getType(System.class), Method.getMethod("long currentTimeMillis()"));
+    storeLocal(slotIndex);
+}
+@Override
+protected void onMethodExit(int opcode) {
+    // getStatic() dup() 等方法都是 GeneratorAdapter 中提供的方法，可方便地执行某些命令
+    getStatic(Type.getType(System.class), "out", Type.getType("Ljava/io/PrintStream;"));
+    // 以下三行是生成一个 StringBuilder 类对象
+    // 因为输出的时候有字符串拼接，默认会使用 StringBuilder 拼接
+    newInstance(Type.getType(StringBuilder.class));
+    dup();
+    invokeConstructor(Type.getType(StringBuilder.class), Method.getMethod("void <init>()"));
+    push("dur = ");
+    invokeVirtual(Type.getType(StringBuilder.class), Method.getMethod("StringBuilder append(String)"));
+    // 拿到运行时截止时间
+    invokeStatic(Type.getType(System.class), Method.getMethod("long currentTimeMillis()"));
+    // 将开始时间添加到操作数栈中
+    Type type = getLocalType(slotIndex);
+    // 这里不要直接调用 visitVarInsn()，会出错
+    method.visitVarInsn(Opcodes.LLOAD,slotIndex);
+    visitInsn(Opcodes.LSUB);
+    invokeVirtual(Type.getType(StringBuilder.class), Method.getMethod("StringBuilder append(long)"));
+    invokeVirtual(Type.getType(StringBuilder.class), Method.getMethod("String toString()"));
+    invokeVirtual(Type.getType(PrintStream.class), Method.getMethod("void println(String)"));
+}
+```

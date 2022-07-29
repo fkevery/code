@@ -38,7 +38,7 @@ visitMethodInsn(int opcode, String owner, String name, String descriptor, boolea
 2. onMethodEnter()：在 visitCode() 中调用，visitCode() 会先于所有指令执行。因此 <mark style="color:red;">onMethodEnter（） 中插入的代码会出现在所有指令之前</mark>。
    1. visitCode() 中如果处理的是构造函数，并不会回调 onMethodEnter()。因为 Java 规定构造函数中的 this() super() 必须放到第一行。
 
-## GeneratorAdapter
+### GeneratorAdapter
 
 > AdaviceAdapter 的父类，MethodVisitor 的子类。里面<mark style="color:red;">封装了常用的方法</mark>，比如对局部变量的访问等。
 
@@ -57,6 +57,12 @@ push("你好");
 // 我们只需要像写java 代码一样即可
 invokeVirtual(Type.getType(PrintStream.class), Method.getMethod("void println(String)"));
 ```
+
+### LocalVariableSorter
+
+> generatorAdapter 父类。主要用于对<mark style="color:red;">局部变量进行重排</mark>
+
+有时候需要在方法内额外添加局部变量，这可能会导致已有的局部变量表发生变化，而 LocalVariableSorter 会保证变化后的局部变量表是正确的。
 
 ## Type
 
