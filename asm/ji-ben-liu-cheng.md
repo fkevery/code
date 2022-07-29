@@ -38,6 +38,26 @@ visitMethodInsn(int opcode, String owner, String name, String descriptor, boolea
 2. onMethodEnter()：在 visitCode() 中调用，visitCode() 会先于所有指令执行。因此 <mark style="color:red;">onMethodEnter（） 中插入的代码会出现在所有指令之前</mark>。
    1. visitCode() 中如果处理的是构造函数，并不会回调 onMethodEnter()。因为 Java 规定构造函数中的 this() super() 必须放到第一行。
 
+## GeneratorAdapter
+
+> AdaviceAdapter 的父类，MethodVisitor 的子类。里面<mark style="color:red;">封装了常用的方法</mark>，比如对局部变量的访问等。
+
+1. <mark style="color:red;">**push 系列：将参数加到操作数栈中**</mark>。内部就是对 push 等字节码指令的封装。
+2. <mark style="color:red;">**arg 系列：操作方法参数，非局部变量表**</mark>。参数需要 index 指的是方法参数中的第几个，不需要考虑 this 的影响，内部会自己处理。比如 test(a,b,c) 如果传 0 表示要操作 a，
+3. local 系列：处理局部变量表。比如将操作数添加至局部变量表中等。
+   1. **loadThis**：<mark style="color:red;">非静态方法中用于读取方法调用对象</mark>。也就是将局部变量表中的第 0 个元素加载到操作数栈中。
+4. <mark style="color:red;">**box 与 unbox 系列：自动装箱拆箱**</mark>。将 int 与 Integer 等来回互转。
+
+例如下面语句就可以很简单的向方法中添加 sout&#x20;
+
+```java
+getStatic(Type.getType(System.class),"out",Type.getType(PrintStream.class));
+push("你好");
+// 注意后面的 Method 参数，它并不是反射中的 Method
+// 我们只需要像写java 代码一样即可
+invokeVirtual(Type.getType(PrintStream.class), Method.getMethod("void println(String)"));
+```
+
 ## Type
 
 > asm 提供的一个工具类
