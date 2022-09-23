@@ -10,7 +10,7 @@ description: 内存分析工具 mat 使用
 
 一个简单示例
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2) (1).png>)
 
 1. 使用时，<mark style="color:red;">**一定要类型匹配。**</mark>如上图属性是 Long 类型，所以 OQL 的时候后面加有 L
 2. 在表名后加上 s，用 s.xxx 引用 s 中的属性<mark style="color:red;">；也可以不加</mark>
