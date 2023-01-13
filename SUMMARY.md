@@ -2,6 +2,7 @@
 
 * [简介](README.md)
 * [Android](android/README.md)
+  * [Andorid 入门](android/andorid-ru-men.md)
   * [adb shell dumpsys 命令](android/adb-shell-dumpsys-ming-ling.md)
   * [Handler](android/handler.md)
   * [Debug 版本查看 sp](android/debug\_sp.md)
@@ -27,4 +28,3 @@
   * [方法操作](asm/fang-fa-cao-zuo.md)
 * [Gradle](gradle/README.md)
   * [基本概念](gradle/ji-ben-gai-nian.md)
-  * [方法操作](gradle/fang-fa-cao-zuo.md)
