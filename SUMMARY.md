@@ -2,7 +2,6 @@
 
 * [简介](README.md)
 * [Android](android/README.md)
-  * [Andorid 入门](android/andorid-ru-men.md)
   * [adb shell dumpsys 命令](android/adb-shell-dumpsys-ming-ling.md)
   * [Handler](android/handler.md)
   * [Debug 版本查看 sp](android/debug\_sp.md)
@@ -18,6 +17,7 @@
   * [实现 mixin 效果](java/mixin.md)
   * [枚举实现责任链模式](java/enum.md)
 * [Git](git/README.md)
+  * [git 对象](git/git-dui-xiang.md)
   * [rebase](git/merge.md)
 * [其他](other/README.md)
   * [MAT](other/mat.md)

@@ -73,11 +73,11 @@ s 10127ad 4
 
 旧提交如下
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (2).png" alt=""><figcaption></figcaption></figure>
 
 输入 <mark style="color:red;">git rebase -i</mark> HEAD\~2，然后通过 vim 中的 <mark style="color:red;">**ddp**</mark> 按钮直接交换两行，保存
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 最终形成的效果如下：
 
