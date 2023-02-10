@@ -2,6 +2,7 @@
 
 * [简介](README.md)
 * [Android](android/README.md)
+  * [hook 系统服务](android/hook-xi-tong-fu-wu.md)
   * [adb shell dumpsys 命令](android/adb-shell-dumpsys-ming-ling.md)
   * [Handler](android/handler.md)
   * [Debug 版本查看 sp](android/debug\_sp.md)

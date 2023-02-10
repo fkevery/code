@@ -10,7 +10,7 @@ description: 基于官方文档的总结
 
 使用 git init 一个文件夹后，就会在文件夹下生成 .git 隐藏目录，里面存储有当前 git 库的所有信息。git 对象都存储与此。如下是一个只提交过一次的目录&#x20;
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption></figcaption></figure>
 
 ## 文件存储
 
@@ -36,7 +36,7 @@ tree：文件夹对象的类型。里面有多条记录，可以指向别的 tre
 
 如下 1 处就是 tree 属性，2 处是提交是的 msg
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
 ## cat-file
 
